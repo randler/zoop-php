@@ -1,5 +1,5 @@
 {
-    "name": "randler/zoop-php",
+    "name": "randler/lib-zoop-php",
     "description": "SDK de pagamentos Zoop",
     "license": "MIT",
     "type": "library",
