@@ -39,7 +39,5 @@ try {
     echo $e->getMessage() . PHP_EOL;
 }
 ```
-Para as demais funções, acesse nossa wiki e confira: 
-[Zoop SDK Wiki](https://github.com/italodeveloper/zoop-sdk/wiki).
 
-Desenvolvido com :heart: por [italodeveloper](https://www.linkedin.com/in/%C3%ADtalo-araujo/) e contribuidores.
+Baseado em [Zoop SDK Wiki](https://github.com/italodeveloper/zoop-sdk/wiki).

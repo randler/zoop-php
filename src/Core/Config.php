@@ -17,14 +17,25 @@ namespace Zoop\Core;
  */
 class Config
 {
-    public static function configure($token, $marketplace, $vendedor, $is_zend = null, $holder = null, $account = null)
+    public static function configure(
+        $token, 
+        $marketplace, 
+        $vendedor, 
+        $is_zend = null, 
+        $holder = null, 
+        $account = null,
+        $is_sandbox = false,)
     {
+        $base_url = 'https://api.zoop.ws';
+        if($is_sandbox) {
+            $base_url = 'https://apigw-sandbox.zoop.ws/v2';
+        }
         $configurations = [
             'marketplace' => $marketplace,
             'holder' => $holder,
             'account' => $account,
             'gatway' => 'zoop',
-            'base_url' => 'https://api.zoop.ws',
+            'base_url' => $base_url,
             'auth' => [
                 'on_behalf_of' => $vendedor,
                 'token' => $token
@@ -43,10 +54,10 @@ class Config
                 'payment_type' => null,
             ],
             'guzzle' => [
-                'base_uri' => 'https://api.zoop.ws',
+                'base_uri' => $base_url,
                 'timeout' => 10,
                 'headers' => [
-                    'Authorization' => 'Basic ' . \base64_encode($token . ':')
+                    'Authorization' => 'Basic ' .\base64_encode($token . ':')
                 ]
             ]
         ];
@@ -57,7 +68,7 @@ class Config
     {
         $client = $configurations['guzzle'];
         unset($configurations['guzzle']);
-        if(\is_null($is_zend)){
+        if(is_null($is_zend)){
             $configurations['guzzle'] = new \GuzzleHttp\Client($client);
         } else {
             $configurations['guzzle'] = new \ZendAdapter\ZendRequest($client);

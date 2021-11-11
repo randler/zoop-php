@@ -1,18 +1,21 @@
 {
-    "name": "italodeveloper/zoop-sdk",
+    "name": "randler/zoop-php",
     "description": "SDK de pagamentos Zoop",
     "license": "MIT",
     "type": "library",
     "keywords": [
-        "italodeveloper",
         "zoop",
         "payment",
         "gateway "
     ],
     "authors": [
         {
-            "name": "Ítalo Araújo",
-            "email": "italoaraujo@gmail.com"
+            "name": "Wallace Souza",
+            "email": "wallace-2033@hotmail.com"
+        },
+        {
+            "name": "Randler Ferraz",
+            "email": "randlersi@gmail.com"
         }
     ],
     "config": {
@@ -27,11 +30,24 @@
         "italodeveloper/guzzle-zend": "^1.2"
     },
     "require-dev": {
+        "phpunit/phpunit": "^8",
+        "squizlabs/php_codesniffer": "^3.3",
         "zendframework/zend-http": ">=2.5"
+    },
+    "scripts": {
+      "test": [
+        "@composer install",
+        "vendor/bin/phpunit"
+      ]
     },
     "autoload": {
         "psr-4": {
             "Zoop\\": "src/"
         }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "Zoop\\Test\\": "tests/unit"
+      }
     }
 }
