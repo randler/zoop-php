@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/randler/Zoop-php">
-    <img alt="Zoop" src="https://www.Zoop.com.br/static/logo-6c8a8337b1a1e6b71cd64a73f0da2f85.png" width="200">
+    <img alt="Zoop" src="https://zoop.com.br/wp-content/themes/zoop/img/novo/logo_zoop.svg" width="200">
   </a>
 </p>
 
@@ -20,8 +20,8 @@
   <a href="https://github.com/codificar/delivery-api-php/releases/">
     <img src="https://img.shields.io/badge/vers%C3%A3o-1.0.0-green" alt="Versão" />
   </a>
-  <a href="https://github.com/randler/Zoop-php/releases">
-    <img src="https://img.shields.io/packagist/dt/randler/Zoop-php.svg" alt="Downloads" />
+  <a href="https://packagist.org/packages/randler/lib-zoop-php">
+    <img src="https://img.shields.io/packagist/dt/randler/lib-zoop-php.svg" alt="Downloads" />
   </a>
 </p>
 
@@ -59,7 +59,7 @@ Você pode acessar a documentação oficial da API acessando esse [link](https:/
 
 Instale a biblioteca utilizando o comando
 
-`composer require randler/Zoop-php`
+`composer require randler/lib-zoop-php`
 <br>
 <br>
 <hr>
