@@ -74,7 +74,7 @@ class Transaction
      */ 
     public function setDescription(string $description)
     {
-        $this->$description = $description;
+        $this->description = $description;
         return $this;
     }
 
