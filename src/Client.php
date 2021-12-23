@@ -6,6 +6,7 @@ use Zoop\Endpoints\Payment;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException as ClientException;
 use Zoop\Endpoints\Banking;
+use Zoop\Endpoints\Webhook;
 use Zoop\Exceptions\InvalidJsonException;
 
 class Client
@@ -21,6 +22,11 @@ class Client
      * @var \Zoop\Endpoints\Payment
      */
     private $payment;
+   
+    /**
+     * @var \Zoop\Endpoints\Webhook
+     */
+    private $webhook;
     
     /**
      * @var \Zoop\Endpoints\Banking
@@ -51,7 +57,7 @@ class Client
     /**
      * @var string
      */
-    const BASE_URI          = "https://api.zoop.ws/v1/";
+    const BASE_URI = "https://api.zoop.ws/v1/";
 
     /**
      * @param string $marketplace_id
@@ -93,6 +99,7 @@ class Client
         $this->http = new HttpClient($options);
 
         $this->payment = new Payment($this);
+        $this->webhook = new Webhook($this);
         $this->banking = new Banking($this);
     }
 
@@ -192,6 +199,14 @@ class Client
     public function payment()
     {
         return $this->payment;
+    }
+    
+    /**
+     * @return \Zoop\Endpoints\Webhook
+     */
+    public function webhook()
+    {
+        return $this->webhook;
     }
 
     /**

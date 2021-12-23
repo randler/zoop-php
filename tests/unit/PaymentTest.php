@@ -16,14 +16,15 @@ use Zoop\Client;
 use Zoop\Key;
 use PHPUnit\Framework\TestCase;
 use Zoop\Beans\Transaction;
+use Zoop\Beans\Webhook;
 
 class ClientTest extends TestCase
 {
     public function testRequestAuth()
     {
-        $zpk = 'zpk_test_...joTd0';
-        $marketplaceId = '438...b92b';
-        $SellerId = '1a41...499';
+        $zpk = 'zpk_test........Td0';
+        $marketplaceId = '43.......92b';
+        $SellerId = '1a4.......499';
 
         $client = new Client(
           $marketplaceId, 
@@ -34,7 +35,7 @@ class ClientTest extends TestCase
         // Requisição de token funcionando
        
 
-        $payment = new Transaction();
+        /*$payment = new Transaction();
         $payment->setDescription('Teste de transação')
                 ->setAmount(1035)
                 ->setOnBehalfOf($SellerId); // responsavel pela venda
@@ -45,7 +46,18 @@ class ClientTest extends TestCase
         
         $pix = $client
             ->payment()
-            ->pix($pixData);
+            ->pix($pixData);*/
+
+        $webhook = new Webhook();
+        $webhook->setUrl("http://fomefome.loc/api/v3/order/webhook-zoop.html"); // responsavel pela venda
+
+        $webhookData = $webhook->getWebhookData();
+
+        //fwrite(STDERR, print_r($pixData, true));
+        
+        $webhook = $client
+            ->webhook()
+            ->create($webhookData);
 
       /*$pix = $client
         ->banking()
@@ -54,10 +66,7 @@ class ClientTest extends TestCase
           "value" => "randlersi@gmail.com"
         ]);*/
 
-        fwrite(STDERR, print_r($pix, true));
-
-        //$response = $client->ride()->details(["id" => 162,"institution_id" => 1, "token" => '$2y$10$u8aWfSLtr3HwFUwrZXSZh.c5cda.rntSyUwEAbW2OEvGTDUGoaIn6']);
-        //fwrite(STDERR, print_r($client->getScope()));
+        fwrite(STDERR, print_r($webhook, true));
         
     }
 }

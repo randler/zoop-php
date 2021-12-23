@@ -45,7 +45,7 @@ class ResponseHandler
 
         $body = $response->getBody()->getContents();
 
-        //fwrite(STDERR, print_r($response));
+        //fwrite(STDERR, print_r($body));
 
         try {
             return self::toJson($body);
@@ -66,9 +66,13 @@ class ResponseHandler
     {
         $result = json_decode($json);
 
+        //fwrite(STDERR, print_r($result));
+
         if (json_last_error() != \JSON_ERROR_NONE) {
             throw new InvalidJsonException(json_last_error_msg());
         }
+
+        //fwrite(STDERR, print_r($result));
 
         return $result;
     }

@@ -19,6 +19,23 @@ class Routes
 
         return $anonymous;
     }
+    
+    /**
+     * @return \Zoop\Anonymous
+     */
+    public static function webhook()
+    {
+        $anonymous = new Anonymous();
+
+        $anonymous->list = static function ($marketplaceId) {
+            return "marketplaces/$marketplaceId/webhooks";
+        };
+        $anonymous->create = static function ($marketplaceId) {
+            return "marketplaces/$marketplaceId/webhooks";
+        };
+
+        return $anonymous;
+    }
 
 
     /**
