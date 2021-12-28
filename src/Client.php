@@ -154,7 +154,7 @@ class Client
         } catch (InvalidJsonException $exception) {
             throw $exception;
         } catch (ClientException $exception) {
-            throw $exception($exception);
+            throw $exception;
         } catch (\Exception $exception) {
             throw $exception;
         }
