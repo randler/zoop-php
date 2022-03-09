@@ -42,5 +42,22 @@ class Webhook extends Endpoint
         );
     }
 
+    /**
+     * @param array $payload
+     *
+     * @return \ArrayObject
+     */
+    public function delete(array $payload)
+    {
+        return $this->client->request(
+            self::DELETE,
+            Routes::webhook()->create($this->client->getMarketplaceId(), $payload['webhook_id']),
+            [],
+            [
+                'Content-Type' => 'application/json',
+            ]
+        );
+    }
+
 }
 

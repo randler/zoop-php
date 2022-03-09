@@ -18,7 +18,7 @@
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="React Native is released under the MIT license." />
   </a>
   <a href="https://github.com/codificar/delivery-api-php/releases/">
-    <img src="https://img.shields.io/badge/vers%C3%A3o-2.0.0-green" alt="Versão" />
+    <img src="https://img.shields.io/badge/vers%C3%A3o-2.0.1-green" alt="Versão" />
   </a>
   <a href="https://packagist.org/packages/randler/lib-zoop-php">
     <img src="https://img.shields.io/packagist/dt/randler/lib-zoop-php.svg" alt="Downloads" />
@@ -42,6 +42,7 @@ Você pode acessar a documentação oficial da API acessando esse [link](https:/
   - [Requisição de Webhook](#requisição-de-webhook)
     - [Listar Webhook](#listar-webhook)
     - [Criar Webhook](#criar-webhook)
+    - [Remover Webhook](#remover-webhook)
 <br>
 <br>
 <br>
@@ -144,6 +145,22 @@ Para criar um webhook:
   $webhook = $client
       ->webhook()
       ->create($webhookData);
+```
+<br>
+<br>
+<hr>
+<br>
+
+#### Remover Webhook
+
+Para remover um webhook especifico:
+
+```php
+<?php
+      
+  $webhook = $client
+      ->webhook()
+      ->delete(['webhook_id' => '475476f22...97bb8ea8']);
 ```
 <br>
 <br>
