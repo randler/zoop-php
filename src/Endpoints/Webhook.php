@@ -51,7 +51,7 @@ class Webhook extends Endpoint
     {
         return $this->client->request(
             self::DELETE,
-            Routes::webhook()->create($this->client->getMarketplaceId(), $payload['webhook_id']),
+            Routes::webhook()->delete($this->client->getMarketplaceId(), $payload['webhook_id']),
             [],
             [
                 'Content-Type' => 'application/json',
