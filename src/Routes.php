@@ -33,7 +33,7 @@ class Routes
         $anonymous->create = static function ($marketplaceId) {
             return "marketplaces/$marketplaceId/webhooks";
         };
-        $anonymous->create = static function ($marketplaceId, $webhookId) {
+        $anonymous->delete = static function ($marketplaceId, $webhookId) {
             return "marketplaces/$marketplaceId/webhooks/$webhookId";
         };
 
