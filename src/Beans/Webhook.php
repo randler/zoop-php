@@ -7,15 +7,31 @@ use Zoop\Client;
 class Webhook
 {
 
+    const POST = 'POST';
+    const GET = 'GET';
+    const PUT = 'PUT';
+    const DELETE = 'DELETE';
+    
     /**
     * @var array | 
     */
     private $event = ['all'];
+    
+    /**
+    * @var array | 
+    */
+    private $event_custom = [];
+
 
     /**
     * @var string
     */
     private $url;
+    
+    /**
+    * @var string
+    */
+    private $method = 'POST';
     
     /**
     * @var string
@@ -36,11 +52,17 @@ class Webhook
      */ 
     public function getWebhookData()
     {
+        $events = $this->event;
+        if(!empty($this->event_custom)) {
+            $events = $this->event_custom;
+        }
+
         return [
-            "event" => $this->event,
+            "event" => $events,
             "url" => $this->url,
             "description" => $this->description,
             "authorization" => $this->authorization,
+            "method" => $this->method
         ];
     }
 
@@ -67,6 +89,27 @@ class Webhook
 		$this->event = $event;
 		return $this;
 	}
+
+    /**
+     * Get |
+     *
+     * @return  array
+     */
+    public function addEvent(string $event) 
+    {
+        $this->event_custom[] = $event;
+        return $this;
+    }
+
+    /**
+     * Get |
+     *
+     * @return  array
+     */
+    public function getEvents()
+    {
+        return $this->event_custom;
+    }
 
     /**
      * Get the value of url
@@ -139,5 +182,15 @@ class Webhook
 		$this->authorization = $authorization;
 		return $this;
 	}
+
+    /**
+     * Set the value of method
+     */
+    public function setMethod($method)
+    {
+        $this->method = $method;
+
+        return $this;
+    }
 }
 

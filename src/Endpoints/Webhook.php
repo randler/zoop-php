@@ -30,12 +30,29 @@ class Webhook extends Endpoint
      *
      * @return \ArrayObject
      */
+    public function events()
+    {
+        return $this->client->request(
+            self::GET,
+            Routes::webhook()->events($this->client->getMarketplaceId()),
+            [],
+            [
+                'Content-Type' => 'application/json',
+            ]
+        );
+    }
+
+    /**
+     * @param array $payload
+     *
+     * @return \ArrayObject
+     */
     public function create(array $payload)
     {
         return $this->client->request(
             self::POST,
             Routes::webhook()->create($this->client->getMarketplaceId()),
-            ['json' => $payload],
+            ['body' => $payload],
             [
                 'Content-Type' => 'application/json',
             ]

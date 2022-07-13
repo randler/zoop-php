@@ -50,6 +50,7 @@ class ClientTest extends TestCase
 
         $webhook = new Webhook();
         $webhook->setUrl("http://fomefome.loc/api/v3/order/webhook-zoop.html"); // responsavel pela venda
+        $webhook->setMethod(Webhook::POST);
 
         $webhookData = $webhook->getWebhookData();
 

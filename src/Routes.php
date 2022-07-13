@@ -30,6 +30,9 @@ class Routes
         $anonymous->list = static function ($marketplaceId) {
             return "marketplaces/$marketplaceId/webhooks";
         };
+        $anonymous->events = static function ($marketplaceId) {
+            return "marketplaces/$marketplaceId/events";
+        };
         $anonymous->create = static function ($marketplaceId) {
             return "marketplaces/$marketplaceId/webhooks";
         };
