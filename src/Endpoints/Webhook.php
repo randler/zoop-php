@@ -52,7 +52,7 @@ class Webhook extends Endpoint
         return $this->client->request(
             self::POST,
             Routes::webhook()->create($this->client->getMarketplaceId()),
-            ['body' => $payload],
+            ['json' => $payload],
             [
                 'Content-Type' => 'application/json',
             ]

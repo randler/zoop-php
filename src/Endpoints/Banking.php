@@ -22,7 +22,7 @@ class Banking extends Endpoint
                 $this->client->getHolder(),
                 $this->client->getAccountId()
             ),
-            ['body' => $payload],
+            ['json' => $payload],
             [
                 'Content-Type' => 'application/json',
             ]

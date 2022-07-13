@@ -18,7 +18,7 @@ class Payment extends Endpoint
         return $this->client->request(
             self::POST,
             Routes::payment()->pix($this->client->getMarketplaceId()),
-            ['body' => $payload],
+            ['json' => $payload],
             [
                 'Content-Type' => 'application/json',
             ]
