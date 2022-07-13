@@ -18,7 +18,7 @@
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="React Native is released under the MIT license." />
   </a>
   <a href="https://github.com/codificar/delivery-api-php/releases/">
-    <img src="https://img.shields.io/badge/vers%C3%A3o-2.0.3-green" alt="Versão" />
+    <img src="https://img.shields.io/badge/vers%C3%A3o-2.0.4-green" alt="Versão" />
   </a>
   <a href="https://packagist.org/packages/randler/lib-zoop-php">
     <img src="https://img.shields.io/packagist/dt/randler/lib-zoop-php.svg" alt="Downloads" />
