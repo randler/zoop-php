@@ -23,11 +23,11 @@ class ResponseHandler
      * @param ClientException $originalException
      *
      * @throws ZoopException
-     * @return void
+     * @return object
      */
     public static function failure(\Exception $originalException)
     {
-        throw self::parseException($originalException);
+        return (object) self::parseException($originalException);
     }
 
     /**
@@ -38,11 +38,11 @@ class ResponseHandler
     private static function parseException(ClientException $guzzleException)
     {
         $response = $guzzleException->getResponse();
-
+        
         if (is_null($response)) {
             return $guzzleException;
         }
-
+        
         $body = $response->getBody()->getContents();
 
         //fwrite(STDERR, print_r($body));
@@ -64,15 +64,16 @@ class ResponseHandler
      */
     private static function toJson($json)
     {
-        $result = json_decode($json);
 
-        //fwrite(STDERR, print_r($result));
+        while (gettype($json) == 'string') {
+            $json = json_decode($json, true);
+        }
+
+        $result = $json;
 
         if (json_last_error() != \JSON_ERROR_NONE) {
             throw new InvalidJsonException(json_last_error_msg());
         }
-
-        //fwrite(STDERR, print_r($result));
 
         return $result;
     }

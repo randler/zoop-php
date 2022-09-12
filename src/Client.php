@@ -2,12 +2,14 @@
 
 namespace Zoop;
 
+use Exception;
 use Zoop\Endpoints\Payment;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException as ClientException;
 use Zoop\Endpoints\Banking;
 use Zoop\Endpoints\Webhook;
 use Zoop\Exceptions\InvalidJsonException;
+use Zoop\Exceptions\ZoopException;
 
 class Client
 {
@@ -142,7 +144,8 @@ class Client
                 $options
             );
 
-            $body = ResponseHandler::success((string)$response->getBody());
+            $body = (Object) ResponseHandler::success((string)$response->getBody());
+
             if(isset($body->accessToken) && !empty($body->accessToken)) {
                 $this->accessToken = $body->accessToken;
                 $this->tokenType = $body->tokenType;
@@ -154,7 +157,18 @@ class Client
         } catch (InvalidJsonException $exception) {
             throw $exception;
         } catch (ClientException $exception) {
-            throw $exception;
+            $handle = ResponseHandler::failure($exception);
+            $jsonError = array(
+                'error' => array()
+            );
+
+            $isError = isset($handle->error) && !empty($handle->error);
+
+            if($isError) {
+                $jsonError = json_encode($handle);
+            }
+
+            throw new ZoopException($jsonError);
         } catch (\Exception $exception) {
             throw $exception;
         }

@@ -2,7 +2,7 @@
 
 namespace Zoop\Exceptions;
 
-final class ZoopException extends \Exception
+class ZoopException extends \Exception
 {
     /**
      * @var int
@@ -37,11 +37,25 @@ final class ZoopException extends \Exception
     {
         $body = json_decode($body, true);
         $error = $body['error'];
-        $this->status = $error['status'];
-        $this->status_code = $error['status_code'];
-        $this->type = $error['type'];
-        $this->category = $error['category'];
-        $this->message = $error['message'];
+        if(!isset($error) || empty($error) ) {
+            $error = array();
+        }
+
+        $this->status = isset($error['status']) && !empty($error['status']) 
+            ? $error['status']
+            : '';
+        $this->status_code = isset($error['status_code']) 
+            ? $error['status_code']
+            : -100;
+        $this->type = isset($error['type']) && !empty($error['type']) 
+            ? $error['type']
+            : '';
+        $this->category = isset($error['category']) && !empty($error['category']) 
+            ? $error['category']
+            : '';
+        $this->message = isset($error['message']) && !empty($error['message']) 
+            ? $error['message']
+            : 'Message Not Found';
 
         $exceptionMessage = $this->buildExceptionMessage();
 
