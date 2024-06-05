@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/randler/Zoop-php">
-    <img alt="Zoop" src="https://zoop.com.br/wp-content/themes/zoop/img/novo/logo_zoop.svg" width="200">
+    <img alt="Zoop" src="https://www.zoop.com.br/_next/static/media/logo-primary.9c277311.svg" width="200">
   </a>
 </p>
 
